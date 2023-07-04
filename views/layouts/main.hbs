@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бяла техника</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+     <link rel="icon" href="/static/images/smallLogo.png" type="image/icon type">
+</head>
+
+<body>
+    <header class="header">
+        <nav>
+            <img src="/static/images/logo.png" class="logo">
+            <ul>
+               
+                <li><a href="/">Начало</a></li>
+                <li><a href="/appliances/catalog">Всички уреди</a></li>
+                {{#if isAuthenticated}}
+                <li><a href="/appliances/search">Търсене</a></li>
+                <li><a href="/appliances/create">Добави обява</a></li>
+                <li><a href="/logout">Изход</a></li>
+                {{else}}
+                <li><a href="/login">Вход</a></li>
+                <li><a href="/register">Регистрация</a></li>
+                {{/if}}
+
+    
+                
+                
+            </ul>
+        </nav>
+    </header>
+    
+    {{#if error}}
+     <div>
+            <div class="errorContainer">
+                <p>{{error}}</p>
+            </div>
+        </div> 
+    {{/if}}
+
+
+{{{body}}}
+
+   <footer>
+        <p>Уреди внос от Германия</p>
+    </footer>
+
+</body>
+
+</html>

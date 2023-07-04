@@ -1,0 +1,20 @@
+
+
+    <main>
+        <section class="crypto-market">
+            <h1><span>Всички</span> Уреди</h1>
+            {{#if crypto}}
+            <div class="offer-list">
+            {{#each crypto}}
+               
+               {{>crypto}}
+            {{/each}}
+            </div>
+            {{else}}
+             <div class="no-offer">
+                <p>Няма качени уреди за сега! Провери по-късно</p>
+            </div>
+            {{/if}}
+        </section>
+    </main>
+
