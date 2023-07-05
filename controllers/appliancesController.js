@@ -1,40 +1,40 @@
 const router = require('express').Router();
 
 const { isAuth } = require('../middlewares/authMiddleware');
-const cryptoServices = require('../services/cryptoService');
+const applianceService = require('../services/applianceService');
 const { getErrorMessage } = require('../utils/errorUtils');
 const { getPaymentMethodViewData } = require('../utils/viewData')
 
 
 router.get('/catalog', async (req, res) => {
-    const crypto = await cryptoServices.getAll().lean();
+    const appliance = await applianceService.getAll().lean();
 
-    res.render('appliances/catalog', { crypto })
+    res.render('appliances/catalog', { appliance })
 });
 
 router.get('/search', async (req,res)=>{
     const {name, paymentMethod} = req.query;
-    const crypto = await cryptoServices.search(name, paymentMethod);
+    const appliance = await applianceService.search(name, paymentMethod);
     const paymentMethods = getPaymentMethodViewData(paymentMethod);
 
-    res.render('appliances/search', {crypto, paymentMethods, name})
+    res.render('appliances/search', {appliance, paymentMethods, name})
 })
 
 
 router.get('/:appliancesId/details', async (req, res) => {
-    const crypto = await cryptoServices.getOne(req.params.appliancesId).lean();
+    const appliance = await applianceService.getOne(req.params.appliancesId).lean();
 
-    // // const isOwner = crypto.owner == req.user?._id;
-    // const isBuyer = crypto.buyers && crypto.buyers.some(id => id == req.user?._id);
+    // // const isOwner = appliance.owner == req.user?._id;
+    // const isBuyer = appliance.buyers && appliance.buyers.some(id => id == req.user?._id);
 
-    res.render('appliances/details', { crypto })
+    res.render('appliances/details', { appliance })
 });
 
 
 router.get('/:appliancesId/buy', isAuth, async (req, res) => {
     try {
-        await cryptoServices.buy(req.user._id, req.params.cryptoId);
-        res.redirect(`/appliances/${req.params.cryptoId}/details`)     
+        await applianceService.buy(req.user._id, req.params.applianceId);
+        res.redirect(`/appliances/${req.params.applianceId}/details`)     
     } catch (error) {
         return res.status(400).render('home/404', { error: getErrorMessage(error) })
     }
@@ -42,24 +42,24 @@ router.get('/:appliancesId/buy', isAuth, async (req, res) => {
 });
 
 router.get('/:appliancesId/edit', isAuth, async (req, res) => {
-    const crypto = await cryptoServices.getOne(req.params.cryptoId);
+    const appliance = await applianceService.getOne(req.params.applianceId);
 
-    const paymentMethods = getPaymentMethodViewData(crypto.paymentMethod);
+    const paymentMethods = getPaymentMethodViewData(appliance.paymentMethod);
 
-    res.render('appliances/edit', { crypto, paymentMethods })
+    res.render('appliances/edit', { appliance, paymentMethods })
 });
 
 router.post('/:appliancesId/edit', isAuth, async (req, res) => {
-    const cryptoData = req.body;
+    const applianceData = req.body;
 
-    const crypto = await cryptoServices.edit(req.params.cryptoId, cryptoData);
+    const appliance = await applianceService.edit(req.params.applianceId, applianceData);
 
 
-    res.redirect(`/appliances/${req.params.cryptoId}/details`)
+    res.redirect(`/appliances/${req.params.applianceId}/details`)
 });
 
 router.get('/:appliancesId/delete', isAuth, async (req, res) => {
-    await cryptoServices.delete(req.params.cryptoId);
+    await applianceService.delete(req.params.applianceId);
 
     res.redirect('/appliances/catalog');
 })
@@ -70,10 +70,10 @@ router.get('/create', isAuth, (req, res) => {
 });
 
 router.post('/create', isAuth, async (req, res) => {
-    const cryptoData = req.body;
+    const applianceData = req.body;
 
     try {
-        await cryptoServices.create(req.user._id, cryptoData);
+        await applianceService.create(req.user._id, applianceData);
     } catch (error) {
         return res.status(400).render('appliances/create', { error: getErrorMessage(error) });
     }

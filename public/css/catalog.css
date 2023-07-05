@@ -3,14 +3,14 @@ main {
     
 }
 
-.crypto-market h1 {
+.appliances-market h1 {
     text-align: center;
     font-size: 40px;
     margin-bottom: 20px;
     margin-top: 3cm;
 }
 
-.crypto-market h1 span {
+.appliances-market h1 span {
     color: #6e0d25;
   
 }
@@ -43,20 +43,20 @@ main {
     border-radius: 100px;
 }
 
-.crypto-market .coin {
+.appliances-market .device {
     display: inline-block;
     width: 500px;
     height: 220px;
     margin-top: 30px;
     margin-left: 20px;
-    margin-bottom: 700px;
+    margin-bottom: 70px;
     margin-right: 10px;
     border: 2px solid#888888;
     border-radius:50px;
     background-color: rgb(186, 149, 147, 0.5);
 }
 
-.crypto-market .coin-img img {
+.appliances-market .device-img img {
     float: left;
     border: 2px solid rgba(169, 152, 198, 0.781);
     /* border-radius: 50%; */
@@ -65,29 +65,29 @@ main {
     margin: -10px;
 }
 
-.crypto-market .coin-info {
+.appliances-market .device-info {
     margin-bottom: 20px;
 
 }
 
-.crypto-market .coin-info h1 {
+.appliances-market .device-info h1 {
     font-size: 24px;
     margin-top: 10px;
     color: white;
 }
 
-.crypto-market .coin-info p {
+.appliances-market .device-info p {
     color: white;
     margin-top: 5px;
 }
 
-.crypto-market .coin-info span {
+.appliances-market .device-info span {
     color: #f8ab46;
     font-weight: bolder;
     margin-left: 1cm;
 }
 
-.crypto-market .coin .btn-details {
+.appliances-market .device .btn-details {
     border: 5em;
     cursor: pointer;
     outline: none;
@@ -107,7 +107,7 @@ main {
     text-decoration: none;
 }
 
-.crypto-market .coin .btn-details:hover {
+.appliances-market .device .btn-details:hover {
     box-shadow: 0 12px 24px rgb(255, 0, 0, 0.5);
 }
 

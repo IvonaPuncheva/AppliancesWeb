@@ -1,30 +1,30 @@
 <main>
     <section id="details-info">
         <h1>Details</h1>
-        <div class="coin-image">
-            <img src="{{crypto.image}}">
+        <div class="device-image">
+            <img src="{{appliance.image}}">
         </div>
 
-        <div class="coin-info">
-            <div class="coin-text">
-                <h1 id="name">{{crypto.name}}</h1>
-                <h3 id="payment">Payment method: {{crypto.paymentMethod}}</h3>
-                <p id="price"><span>Price: ${{crypto.price}}</span></p>
-                <p id="description">{{crypto.description}}</p>
+        <div class="device-info">
+            <div class="device-text">
+                <h1 id="name">{{appliance.name}}</h1>
+                <h3 id="payment">Payment method: {{appliance.paymentMethod}}</h3>
+                <p id="price"><span>Price: ${{appliance.price}}</span></p>
+                <p id="description">{{appliance.description}}</p>
             </div>
             <div class="product-btn">
               
                 <!--Only for registered user and author of the publication -->
                 <div class="author">
-                    <a href="/crypto/{{crypto._id}}/edit" class="btn-edit">Edit</a>
-                    <a href="/crypto/{{crypto._id}}/delete" class="btn-delete">Delete</a>
+                    <a href="/appliance/{{appliance._id}}/edit" class="btn-edit">Edit</a>
+                    <a href="/appliance/{{appliance._id}}/delete" class="btn-delete">Delete</a>
                 </div>
             
-                <!-- Logged in user who has already buy this crypto-->
+                <!-- Logged in user who has already buy this appliance-->
                 {{!-- <p class="buy-message">Вие си купихте уред.</p> --}}
              
-                <!-- Logged in user who has not yet buy this crypto-->
-                <a href="/crypto/{{crypto._id}}/buy" class="btn-buy">Buy</a>
+                <!-- Logged in user who has not yet buy this appliance-->
+                <a href="/appliance/{{appliance._id}}/buy" class="btn-buy">Buy</a>
           
 
 

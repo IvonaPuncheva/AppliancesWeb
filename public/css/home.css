@@ -100,7 +100,7 @@ nav ul li a {
     border-radius: 30px;
 }
 
-.coin-list {
+.device-list {
     position: absolute;
     right: 10%;
     bottom: 50px;
@@ -108,7 +108,7 @@ nav ul li a {
     align-items: center;
 }
 
-.coin {
+.device {
     display: flex;
     align-items: center;
     font-size: 14px;
@@ -119,12 +119,12 @@ nav ul li a {
     border-radius: 8px;
 }
 
-.coin img {
+.device img {
     width: 40px;
     margin-right: 10px;
 }
 
-.coin h3 {
+.device h3 {
     color: #fff;
     margin-bottom: 5px;
 }
