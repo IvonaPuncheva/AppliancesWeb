@@ -22,7 +22,7 @@ main {
     
 }
 
-#details-info .coin-image>img {
+#details-info .device-image>img {
     /* border-radius: 50%; */
     margin: 20px auto;
     display: block;
@@ -30,7 +30,7 @@ main {
     border: 5px solid #fff;
 }
 
-#details-info .coin-text {
+#details-info .device-text {
     margin-top: 10px;
     margin-bottom: 15px;
 }

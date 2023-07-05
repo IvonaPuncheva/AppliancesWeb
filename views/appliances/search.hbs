@@ -1,27 +1,27 @@
 
 
     <main>
-        <section class="crypto-search">
-            <h1>Search</h1>
+        <section class="appliance-search">
+            <h1>Търсене</h1>
 
             <form class="search-form" method="GET">
-                <input type="text" class="search-coin" name="name" value="{{name}}" placeholder="Search here...">
+                <input type="text" class="search-device" name="name" value="{{name}}" placeholder="Потърси тук...">
               {{>paymentMethod}}
-                <button type="submit" class="btn-search">Search</button>
+                <button type="submit" class="btn-search">Търси</button>
             </form>
 
-            {{#if crypto}}
+            {{#if appliance}}
             <div class="search-result">
                 <div class="search-list">
-                   {{#each crypto}}
-                   {{>crypto}}
+                   {{#each appliance}}
+                   {{>appliance}}
                    {{/each}}
                 </div>
 
             </div>
             {{else}}
             <div class="no-match">
-                <p>No match was found!</p>
+                <p>Няма намерени уреди!</p>
             </div>
             {{/if}}
         </section>
