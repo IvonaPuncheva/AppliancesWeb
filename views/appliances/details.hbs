@@ -24,9 +24,49 @@
                 {{!-- <p class="buy-message">Вие си купихте уред.</p> --}}
              
                 <!-- Logged in user who has not yet buy this appliance-->
-                <a href="/appliance/{{appliance._id}}/buy" class="btn-buy">Buy</a>
+                <a href="/appliance/{{appliance._id}}/buy" id="btn-buy" class="btn-buy">Buy</a>
           
-
+<script>
+    const btnbuy = document.getElementById('btn-buy');
+    btnbuy.addEventListener('click', function() {
+        // Create a PayPal payment object
+        const payment = {
+        intent: 'sale',
+        payer: {
+            payment_method: 'paypal'
+        },
+        // Include transaction details such as amount, currency, and description
+        transactions: [
+            {
+            amount: {
+                total: '10.00',
+                currency: 'USD'
+            },
+            description: 'Payment for the order'
+            }
+        ],
+        // Redirect URLs for the buyer after payment completion
+        redirect_urls: {
+            return_url: 'http://localhost:5000/', // Replace with your success URL
+            cancel_url: 'http://localhost:5000/' // Replace with your cancel URL
+        }
+        };
+        // Create a PayPal payment
+    paypal.payment.create(payment, function(err, payment) {
+        if (err) {
+        console.error(err);
+        } else {
+        // Redirect the buyer to the PayPal payment approval URL
+        for (let i = 0; i < payment.links.length; i++) {
+            if (payment.links[i].rel === 'approval_url') {
+            res.redirect(payment.links[i].href);
+            break;
+            }
+        }
+        }
+    });
+    });
+</script>
 
 
 
