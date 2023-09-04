@@ -53,8 +53,9 @@ main {
 }
 
 .btn-edit,
-.btn-delete,
-.btn-buy {
+.btn-delete {
+/* .btn-buy  */
+
     border: 5em;
     cursor: pointer;
     outline: none;
@@ -71,13 +72,13 @@ main {
     text-decoration: none;
 }
 
-.btn-buy {
+/* .btn-buy {
     margin: auto;
     display: flex;
     justify-content: center;
     width: 200px;
     margin-bottom: 20px;
-}
+} */
 
 .author {
     display: flex;

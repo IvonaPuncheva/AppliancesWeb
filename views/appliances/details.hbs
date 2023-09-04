@@ -1,4 +1,4 @@
-<main>
+{{!-- <main>
     <section id="details-info">
         <h1>Details</h1>
         <div class="device-image">
@@ -70,6 +70,75 @@
 
 
 
+            </div>
+        </div>
+    </section>
+</main> --}}
+
+<main>
+    <section id="details-info">
+        <h1>Детайли</h1>
+        <div class="device-image">
+            <img src="{{appliance.image}}">
+        </div>
+
+        <div class="device-info">
+            <div class="device-text">
+                <h1 id="name">{{appliance.name}}</h1>
+                <h3 id="payment">Метод за плащане: {{appliance.paymentMethod}}</h3>
+                <p id="price"><span>Цена:{{appliance.price}} лв.</span></p>
+                <p id="description">{{appliance.description}}</p>
+            </div>
+            <div class="product-btn">
+
+                <!--Only for registered user and author of the publication -->
+                <div class="author">
+                    <a href="/appliance/{{appliance._id}}/edit" class="btn-edit">Редактиране</a>
+                    <a href="/appliance/{{appliance._id}}/delete" class="btn-delete">Изтриване</a>
+                </div>
+
+                <!-- Logged in user who has already buy this appliance-->
+                {{!-- <p class="buy-message">Вие си купихте уред.</p> --}}
+
+                <!-- Logged in user who has not yet buy this appliance-->
+                <script
+                    src="https://www.paypal.com/sdk/js?client-id=AWKLqownphob_f3hn6DQia7oFXKiIN-jG1PNqC9MPEZ2vQHrHe4TlDUJU1xz5KGPdDyhbTefacyc9P8H&currency=USD"></script>
+                <!-- Set up a container element for the button -->
+                <div id="paypal-button-container"></div>
+                <script>
+                    paypal.Buttons({
+                        // Order is created on the server and the order id is returned
+                        createOrder: (data, actions) => {
+                            return fetch("/appliances/my-server/create-paypal-order", {
+                                method: "post",
+                                // use the "body" param to optionally pass additional order information
+                                // like product skus and quantities
+                            })
+                                .then((response) => {
+                                    console.log('response', response)
+                                    response.json();
+                                })
+                                .then((order) => order.id);
+                        },
+                        // Finalize the transaction on the server after payer approval
+                        onApprove: (data, actions) => {
+                            return fetch(`/api/orders/${data.orderID}/capture`, {
+                                method: "post",
+                            })
+                                .then((response) => response.json())
+                                .then((orderData) => {
+                                    // Successful capture! For dev/demo purposes:
+                                    console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                                    const transaction = orderData.purchase_units[0].payments.captures[0];
+                                    alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details`);
+                                    // When ready to go live, remove the alert and show a success message within this page. For example:
+                                    // const element = document.getElementById('paypal-button-container');
+                                    // element.innerHTML = '<h3>Thank you for your payment!</h3>';
+                                    // Or go to another URL:  actions.redirect('thank_you.html');
+                                });
+                        }
+                    }).render('#paypal-button-container');
+                </script>
             </div>
         </div>
     </section>
