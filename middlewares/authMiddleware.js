@@ -32,3 +32,21 @@ exports.isAuth= (req,res,next) =>{
      }
     next();
 }
+
+
+exports.checkAdmin = (req,res,next) => {
+    if(req.user && req.user.username == 'AdminNP168'){
+        res.locals.isAdmin = true;
+    } else {
+        res.locals.isAdmin = false;
+    }
+
+    next();
+}
+
+exports.isAdmin= (req,res,next) =>{
+    if(!(req.user && req.user.username == 'AdminNP168')){
+        return res.redirect('/')
+    }
+    next();
+}

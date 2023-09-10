@@ -6,9 +6,39 @@
 
             <form class="search-form" method="GET">
                 <input type="text" class="search-device" name="name" value="{{name}}" placeholder="Потърси тук...">
-              {{>paymentMethod}}
+             
                 <button type="submit" class="btn-search">Търси</button>
             </form>
+
+            <form class="filterForm remove_bottom" name="filter" method="get" action="">
+	
+<form class="filterForm remove_bottom" name="filter" method="get" action="">
+	<fieldset>
+
+		<legend>&nbsp;Филтър&nbsp;</legend>
+			<select name="name">
+				<option value="name">Изберете категория</option>
+										<option value="7" >microwave</option>
+											<option value="3" >Миялни</option>
+											<option value="1" >Перални</option>
+											<option value="2" >Печки</option>
+											<option value="4" >Сушилни</option>
+											<option value="6" >Фризери</option>
+											<option value="5" >Хладилници</option>
+									<option value="all" >Всички продукти</option>
+			</select>
+			<select name="sortId">
+				<option value="sortBy">Сортирай по</option>
+				<option value="1" >Азбучен ред</option>
+				<option value="2" >Цена възходящо</option>
+				<option value="3" >Цена низходящо</option>
+				<option value="4" >Най-скоро добавени</option>
+				<option value="5" >Най-отдавна добавени</option>
+			</select>
+			<input type="button" name="filterSet" value="филтрирай" onclick="submit()"/>
+			<input type="button" name="filterClear" value="Изчисти" onclick="window.location.href = 'catalog.php';"/>
+	</fieldset>
+</form>
 
             {{#if appliance}}
             <div class="search-result">
@@ -24,5 +54,6 @@
                 <p>Няма намерени уреди!</p>
             </div>
             {{/if}}
+            
         </section>
     </main>

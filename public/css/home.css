@@ -99,6 +99,10 @@ nav ul li a {
     padding: 15px 30px;
     border-radius: 30px;
 }
+.content .trade:hover{
+    border: 2px solid #FF3131;
+}
+
 
 .device-list {
     position: absolute;
@@ -138,6 +142,8 @@ footer p {
     color: white;
     font-weight: bolder;
     text-align: center;
+    font-size: 25px;
+    
 }
 
 .errorContainer {

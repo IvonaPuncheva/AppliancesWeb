@@ -92,7 +92,7 @@ router.use(express.static("public"));
 router.use(express.json());
 app.use(express.static("public"));
 app.use(express.json());
-const { isAuth } = require('../middlewares/authMiddleware');
+const { isAuth, isAdmin } = require('../middlewares/authMiddleware');
 const applianceService = require('../services/applianceService');
 const { getErrorMessage } = require('../utils/errorUtils');
 const { getPaymentMethodViewData } = require('../utils/viewData');
@@ -125,43 +125,43 @@ router.get('/:appliancesId/details', async (req, res) => {
 
 router.get('/:appliancesId/buy', isAuth, async (req, res) => {
     try {
-        await applianceService.buy(req.user._id, req.params.applianceId);
-        res.redirect(`/appliances/${req.params.applianceId}/details`)
+        await applianceService.buy(req.user._id, req.params.appliancesId);
+        res.redirect(`/appliances/${req.params.appliancesId}/details`)
     } catch (error) {
         return res.status(400).render('home/404', { error: getErrorMessage(error) })
     }
 
 });
 
-router.get('/:appliancesId/edit', isAuth, async (req, res) => {
-    const appliance = await applianceService.getOne(req.params.applianceId);
+router.get('/:appliancesId/edit', isAdmin, async (req, res) => {
+    const appliance = await applianceService.getOne(req.params.appliancesId);
 
     const paymentMethods = getPaymentMethodViewData(appliance.paymentMethod);
 
     res.render('appliances/edit', { appliance, paymentMethods })
 });
 
-router.post('/:appliancesId/edit', isAuth, async (req, res) => {
+router.post('/:appliancesId/edit', isAdmin, async (req, res) => {
     const applianceData = req.body;
 
-    const appliance = await applianceService.edit(req.params.applianceId, applianceData);
+    const appliance = await applianceService.edit(req.params.appliancesId, applianceData);
 
 
-    res.redirect(`/appliances/${req.params.applianceId}/details`)
+    res.redirect(`/appliances/${req.params.appliancesId}/details`)
 });
 
-router.get('/:appliancesId/delete', isAuth, async (req, res) => {
-    await applianceService.delete(req.params.applianceId);
+router.get('/:appliancesId/delete', isAdmin, async (req, res) => {
+    await applianceService.delete(req.params.appliancesId);
 
     res.redirect('/appliances/catalog');
 })
 
 
-router.get('/create', isAuth, (req, res) => {
+router.get('/create', isAdmin, (req, res) => {
     res.render('appliances/create')
 });
 
-router.post('/create', isAuth, async (req, res) => {
+router.post('/create', isAdmin, async (req, res) => {
     const applianceData = req.body;
 
     try {
@@ -217,7 +217,7 @@ async function createOrder() {
             }),
         });
         const data = await response.json();
-        console.log(data);
+        // console.log(data);
         return data;
     } catch (error) {
         console.log('error', error)
@@ -253,6 +253,7 @@ async function capturePayment(orderId) {
     });
     const data = await response.json();
     return data;
+    
 }
 
 

@@ -7,6 +7,7 @@ body {
     background-size: cover;
     padding: 0 7%;
     color: #fff;
+  
 }
 
 main {
@@ -15,9 +16,10 @@ main {
 
 .appliance-search h1 {
     text-align: center;
-    font-size: 30px;
+    font-size: 40px;
     margin-bottom: 20px;
     margin-top: 3cm;
+    
 }
 
 .search-form {
@@ -25,26 +27,34 @@ main {
     width: 500px;
     height: 40px;
     background: #444;
-    background: rgba(0, 0, 0, .2);
+    background: rgba(0, 0, 0, 0.5);
     border-radius: 3px;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.20);
-    margin-left: 5%;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.479);
+    /* margin-left: 5%; */
     margin-top: 100%;
+    font-size: 20px;
+    margin-left: 1100px;
+   
+    
 }
 
 .search-form input,
 select {
-    width: 470px;
+    width: 370px;
     color: #ccc;
     background: transparent;
     border-radius: 3px 0 0 3px;
     height: 40px;
-    border: 1px solid #fff;
+    border: 3px solid rgba(94, 11, 21, 0.586);
+    font-size: 20px;
+   
 }
 
 .search-form option {
     background: rgba(9, 9, 95, 0.652);
     color: white;
+    font-size: 20px;
+   
 }
 
 .search-form button {
@@ -54,8 +64,14 @@ select {
     height: 40px;
     width: 120px;
     color: #fff;
-    border: 1px solid #fff;
+    border: 2px solid rgba(94, 11, 21, 0.586);
     background: transparent;
+    font-size: 20px;
+    /* margin-left: 1000px; */
+    background: rgba(94, 11, 21, 0.603);
+}
+.search-form button:hover {
+    transform: scale(1.2);
 }
 
 .search-list {
@@ -66,13 +82,16 @@ select {
         0 2px 10px 0 rgba(0, 0, 0, 0.20);
     background-color: rgba(231, 223, 247, 0.1);
     width: auto;
-    height: 300px;
-    margin-top: 100px;
+    height: 650px;
+    margin-top: -169px;
     overflow-y: scroll;
+    margin-left: 250px;
+    
 }
 
 .search-list::-webkit-scrollbar {
     width: 20px;
+  
 }
 
 .search-list::-webkit-scrollbar-track {
@@ -81,7 +100,7 @@ select {
 }
 
 .search-list::-webkit-scrollbar-thumb {
-    background-image: linear-gradient(180deg, #917082 0%, #000000 99%);
+    background-image: linear-gradient(180deg, #6e0d25 0%, #000000 99%);
     box-shadow: inset 2px 2px 5px 0 rgba(#fff, 0.5);
     border-radius: 100px;
 }
@@ -116,7 +135,7 @@ select {
 .search-list .device-info h1 {
     font-size: 24px;
     margin-top: 10px;
-    color: white;
+    color: rgba(119, 0, 0, 0.863);
 }
 
 .search-list .device-info p {
@@ -159,7 +178,7 @@ select {
     border-radius: 5px;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.20),
         0 2px 10px 0 rgba(0, 0, 0, 0.20);
-    background-color: rgba(71, 20, 158, 0.1);
+    background-color: rgba(158, 94, 20, 0.1); 
     width: auto;
     height: 100px;
     margin-top: 30px    
@@ -169,4 +188,38 @@ select {
     font-size: 30px;
     text-align: center;
     padding-top: 30px;
+}
+
+.filterForm fieldset,
+.addProduct fieldset {
+  border: 3px solid rgba(94, 11, 21, 0.586);
+  color: #ffffff;
+  margin: 0 80px;
+  font-size: 25px;
+  margin-left: -110px;
+  
+  
+}
+.filterForm select,
+.addProduct select {
+  width: 250px;
+  margin-right: 5px;
+  background: #6e0d25;
+  color: #cacaca;
+  font-weight: bold;
+  border-radius: 30px;
+  border: 1px solid #000000;
+  display: inline;
+  
+}
+.filterForm input[type="submit"],
+.filterForm input[type="button"] {
+  padding: 2px 2px;
+  margin-right: 5px;
+  border: 0;
+}
+.filterForm p,
+strong {
+  margin-left: 5px;
+  color: #ffc21a;
 }

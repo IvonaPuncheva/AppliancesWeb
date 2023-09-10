@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+{{!-- <html lang="en" > --}}
+<html lang="bg">
 
 <head>
     <meta charset="UTF-8">
@@ -17,10 +18,12 @@
             <ul>
                
                 <li><a href="/">Начало</a></li>
-                <li><a href="/appliances/catalog">Всички уреди</a></li>
-                {{#if isAuthenticated}}
+                <li><a href="/appliances/catalog">Каталог</a></li>
                 <li><a href="/appliances/search">Търсене</a></li>
+                {{#if isAuthenticated}}
+                {{#if isAdmin}}
                 <li><a href="/appliances/create">Добави обява</a></li>
+                {{/if}}
                 <li><a href="/logout">Изход</a></li>
                 {{else}}
                 <li><a href="/login">Вход</a></li>
@@ -46,7 +49,10 @@
 {{{body}}}
 
    <footer>
-        <p>Уреди внос от Германия</p>
+        {{!-- <p>Уреди внос от Германия</p> --}}
+     <h1> <p> <a href="/contacts" class="trade">Контакти</a> <a>|</a> <a href="/delivery" class="trade">Доставка</a> <a>| </a><a href="/warranty" class="trade">Гаранция</a>  </p> </h1>
+   
+   
     </footer>
 
 </body>
